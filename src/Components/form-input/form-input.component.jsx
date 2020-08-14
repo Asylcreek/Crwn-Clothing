@@ -6,7 +6,7 @@ const FormInput = (props) => {
   return (
     <div className="group">
       <input
-        type={props.text ? props.text : props.name.toLowerCase()}
+        type={props.type ? props.type : props.name.toLowerCase()}
         name={props.name}
         value={props.value}
         onChange={props.handleChange}
