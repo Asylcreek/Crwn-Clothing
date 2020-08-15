@@ -4,6 +4,8 @@ import { createStructuredSelector } from 'reselect';
 
 import './checkoutPage.styles.scss';
 
+import CheckoutItem from '../../Components/checkout-item/checkout-item.component';
+
 import {
   selectCartItems,
   selectTotalCartItemsCost,
@@ -29,7 +31,9 @@ const CheckoutPage = (props) => {
           <span>Remove</span>
         </div>
       </div>
-
+      {props.cartItems.map((cartItem) => (
+        <CheckoutItem key={cartItem.id} item={cartItem} />
+      ))}
       <div className="total">
         <span>TOTAL: ${props.totalCost}</span>
       </div>
