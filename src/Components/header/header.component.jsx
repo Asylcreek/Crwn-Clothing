@@ -6,6 +6,9 @@ import { connect } from 'react-redux';
 import './header.styles.scss';
 import { ReactComponent as Logo } from '../../assets/crown.svg';
 
+import CartIcon from '../cart-icon/cart-icon.component';
+import CartDropdown from '../cart-dropdown/cart-dropdown.component';
+
 import { auth } from '../../firebase/firebase.utils';
 
 const Header = (props) => {
@@ -18,7 +21,7 @@ const Header = (props) => {
         <Link className="option" to="/shop">
           Shop
         </Link>
-        <Link className="option" to="/shop">
+        <Link className="option" to="/">
           Contact
         </Link>
         {props.currentUser ? (
@@ -30,13 +33,16 @@ const Header = (props) => {
             Sign In
           </Link>
         )}
+        <CartIcon />
       </div>
+      {!props.showCart && <CartDropdown />}
     </div>
   );
 };
 
 const mapStateToProps = (state) => ({
   currentUser: state.user.currentUser,
+  showCart: state.cart.hidden,
 });
 
 export default connect(mapStateToProps)(Header);
