@@ -5,6 +5,7 @@ import { createStructuredSelector } from 'reselect';
 import './checkoutPage.styles.scss';
 
 import CheckoutItem from '../../Components/checkout-item/checkout-item.component';
+import StripeCheckoutButton from '../../Components/stripe-button/stripe-button.component';
 
 import {
   selectCartItems,
@@ -37,6 +38,12 @@ const CheckoutPage = (props) => {
       <div className="total">
         <span>TOTAL: ${props.totalCost}</span>
       </div>
+      <div className="test-warning">
+        *Please use the following test credit card for payments <br /> 4242 4242
+        4242 4242, expiry date should be later than your current date, CVV can
+        be any three digits
+      </div>
+      <StripeCheckoutButton price={props.totalCost} />
     </div>
   );
 };
