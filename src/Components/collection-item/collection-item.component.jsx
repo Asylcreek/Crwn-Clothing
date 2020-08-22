@@ -17,7 +17,7 @@ const CollectionItem = (props) => {
         <span className="name">{props.item.name}</span>
         <span className="price">{props.item.price}</span>
       </div>
-      <Button handleClick={() => props.addItemToCart(props.item)} inverted>
+      <Button onClick={() => props.addItemToCart(props.item)} inverted>
         Add to Cart
       </Button>
     </div>

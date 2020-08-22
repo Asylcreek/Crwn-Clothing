@@ -8,8 +8,8 @@ import {
   LogoContainer,
   OptionsContainer,
   OptionLink,
-  OptionDiv,
 } from './header.styles';
+
 import { ReactComponent as Logo } from '../../assets/crown.svg';
 
 import CartIcon from '../cart-icon/cart-icon.component';
@@ -29,7 +29,9 @@ const Header = (props) => {
         <OptionLink to="/shop">Shop</OptionLink>
         <OptionLink to="/">Contact</OptionLink>
         {props.currentUser ? (
-          <OptionDiv onClick={() => auth.signOut()}>Sign Out</OptionDiv>
+          <OptionLink as="div" onClick={() => auth.signOut()}>
+            Sign Out
+          </OptionLink>
         ) : (
           <OptionLink to="/signin">Sign In</OptionLink>
         )}

@@ -25,7 +25,7 @@ const CartDropdown = (props) => {
       </div>
 
       <Button
-        handleClick={() => {
+        onClick={() => {
           props.history.push('/checkout');
           props.dispatch(toggleShowCart());
         }}
