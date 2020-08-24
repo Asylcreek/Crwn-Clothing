@@ -18,6 +18,7 @@ import { selectCurrentUser } from './redux/user/user.selectors';
 
 function App(props) {
   const { setCurrentUser } = props;
+
   useEffect(() => {
     const unsubscribeFromAuth = auth.onAuthStateChanged(async (userAuth) => {
       if (!userAuth) return setCurrentUser(null);
