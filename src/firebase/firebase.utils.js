@@ -48,7 +48,6 @@ export const addCollectionAndDocuments = async(
         const newDocRef = collectionRef.doc();
         batch.set(newDocRef, obj);
     });
-
     return await batch.commit();
 };
 
