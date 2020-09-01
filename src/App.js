@@ -17,22 +17,6 @@ import { setCurrentUser } from './redux/user/user.actions';
 import { selectCurrentUser } from './redux/user/user.selectors';
 
 function App(props) {
-  const { setCurrentUser } = props;
-
-  useEffect(() => {
-    const unsubscribeFromAuth = auth.onAuthStateChanged(async (userAuth) => {
-      if (!userAuth) return setCurrentUser(null);
-
-      const userRef = await createUserProfileDocument(userAuth);
-
-      userRef.onSnapshot((snapShot) => {
-        setCurrentUser({ id: snapShot.id, ...snapShot.data() });
-      });
-    });
-
-    return () => unsubscribeFromAuth();
-  }, [setCurrentUser]);
-
   return (
     <div>
       <Header />
@@ -54,8 +38,4 @@ const mapStateToProps = createStructuredSelector({
   currentUser: selectCurrentUser,
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  setCurrentUser: (user) => dispatch(setCurrentUser(user)),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps)(App);
